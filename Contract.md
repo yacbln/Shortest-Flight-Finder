@@ -96,5 +96,3 @@ and a separate github commit over the same document.
 
 I, Quinn Doud (quinnd2) agree to all terms in this contract.
 I, Suhaas Narayan (suhaasn3) agree to all terms in this contract.
-
-
