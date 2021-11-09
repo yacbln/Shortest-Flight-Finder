@@ -1,5 +1,4 @@
 ﻿
-
 CS 225 Data Structures
 
 Project Proposal (vasilis2-suhaasn3-quinnd2-yacineb2)
