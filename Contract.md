@@ -94,6 +94,8 @@ and a separate github commit over the same document.
 
 **Signature:**
 
-I, Quinn Doud (quinnd2) agree to all terms in this contract.
+I, Quinn Doud (quinnd2), agree to all terms in this contract.
 
-I, Suhaas Narayan (suhaasn3) agree to all terms in this contract.
+I, Suhaas Narayan (suhaasn3), agree to all terms in this contract.
+
+I, Yacine Boulaioune (yacineb2), agree to all terms in this contract.
