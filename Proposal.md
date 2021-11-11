@@ -7,15 +7,12 @@ Project Proposal (vasilis2-suhaasn3-quinnd2-yacineb2)
 
 \2. **Dataset Acquisition and Processing:**
 
-We have chosen to use the OpenFlights routes dataset. It currently uses the .data
+We have chosen to use the OpenFlights dataset.
 
-ﬁle extension, but will be downloaded locally to be converted into a csv/pandas
+We will store the data needed for our target as a directed graph in which each node is a unique airport and directed edges will connect a source airport to a destination airport if a route exists based on routes.dat.
+The weight of every edge will be the distance between the two airports it is connecting which will determine how long is a flight.
 
-DataFrame. Once converted, it will be cleaned using pandas methods such as
-
-df.dropna or scikit-learn FunctionTransformer methods. After cleaning, the
-
-dataset will be hosted on GitHub.
+To acquire the data needed we will download the data subsets airports.dat and routes.dat. In airports.dat,  we are interested in airportIDs and the longitude and latitude which together determine the location of the airport in the map. Routes.dat on the other hand stores all possible connections between airports ,in other words, edges that connect the nodes in our graph. These two data subsets will be downloaded locally to be converted into a csv/pandas DataFrame. Once converted, it will be cleaned using pandas methods such as df.dropna or scikit-learn FunctionTransformer methods. After cleaning, the dataset will be hosted on GitHub.
 
 \3. **Graph Algorithms:** We will implement BFS for Traversal and for that we need a Graph Iterator.
 
