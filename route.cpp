@@ -4,7 +4,6 @@
 #include <cmath> 
 #define earthRadiusMiles 3956.0
 
-using namespace std;
 
 // custom constructor
 Route:: Route(Airport* sourceAirport, Airport* destinationAirport){

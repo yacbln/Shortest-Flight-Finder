@@ -3,7 +3,7 @@
 #include "airport.h"
 #include <utility>
 
-using namespace std; 
+using std::pair; 
 
 /*class wrapping important info about a route between a source and destination airport */ 
 class Route {
