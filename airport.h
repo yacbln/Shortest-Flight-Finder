@@ -11,6 +11,12 @@ public:
      // custom constructor 
      Airport(unsigned id, string name, string city, string country, double latitude, double longitude);
 
+
+     //put getters if needed  
+     unsigned getAirportID(); 
+     double getAirportLatitude(); 
+     double getAirportLongitude();
+
 private:     
 
   unsigned _id; 

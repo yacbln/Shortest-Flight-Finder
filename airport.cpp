@@ -8,3 +8,21 @@ _longitude(longitude) {
 
 };
 
+
+//getters 
+
+unsigned Airport::getAirportID(){
+
+    return _id;
+}
+
+
+double getAirportLatitude(){
+
+    return _latitude;
+} 
+
+double getAirportLongitude(){
+
+    return _longitude;
+} 

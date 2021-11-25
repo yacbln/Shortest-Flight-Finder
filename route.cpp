@@ -22,10 +22,10 @@ Route:: ~Route() {
 // Using "Haversine" formula to calculate the distance between two airports based on their longitude and latitude 
 double Route::calculateRouteDistance  (Airport* sourceAirport , Airport* destinationAirport){
 
-  double latiSourRad = sourceAirport->_latitude * M_PI / 180; 
-  double longSourRad = sourceAirport->_longitude * M_PI / 180; 
-  double latiDistRad = destinationAirport->_latitude * M_PI / 180; 
-  double longDistRad = destinationAirport->_longitude * M_PI / 180; 
+  double latiSourRad = sourceAirport-> getAirportLatitude() * M_PI / 180; 
+  double longSourRad = sourceAirport-> getAirportLongitude()* M_PI / 180; 
+  double latiDistRad = destinationAirport-> getAirportLatitude() * M_PI / 180; 
+  double longDistRad = destinationAirport-> getAirportLongitude() * M_PI / 180; 
 
   double u = sin((latiDistRad - latiSourRad)/2);
   double v = sin((longDistRad - longSourRad )/2);
