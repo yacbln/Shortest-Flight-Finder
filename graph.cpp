@@ -59,9 +59,9 @@ for (Route* route: *routes)
 // This helper function connects two airports with and edge (a route)
 void Graph::addEdge (Airport* sourceAirport, Route* outGoingRoute){
 
-// since the IDs of airports are unique, incrementing by 1 and starts from 0, we will use them to
-// represent index of an airport in the adjacency list
+// since the IDs of airports are unique, incrementing by 1 and starts from 1, we will use them to
+// represent index of an airport in the adjacency list after substracting 1
 
-Adj[sourceAirport->getAirportID()].push_back (outGoingRoute);
+Adj[sourceAirport->getAirportID() -1].push_back (outGoingRoute);
 
 }
