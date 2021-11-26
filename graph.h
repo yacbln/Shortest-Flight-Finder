@@ -36,7 +36,7 @@ class Graph {
 
     private:
 
-    vector<Airport*>* V ; 
+    vector<Airport*> V ; 
     list<Route*>* Adj; 
     
 

@@ -1,27 +1,29 @@
 #include "graph.h"
+#include "fileio.h"
 
 #include <utility>
 
 using std::pair;
-
-using namespace FileIO;
-
+using std::vector;
 
 // custom constuctor: build the whole graph based on airports and routes datasets
 Graph::Graph(const string& airportsDatasetName , const string& routesDatasetName){
 
-//load 
-V = FileIO::loadAirports (airportsDatasetName); 
+//load airports 
+ vector<Airport*> airportsVector = FileIO::loadAirports (airportsDatasetName); 
+ for (Airport* airport: airportsVector)
+     V.push_back(airport); 
+
 
 //set the length of adjacency list equal to number of vertices (airports)
-Adj = new list<Route*>[V->size()]; 
+Adj = new list<Route*>[V.size()]; 
 
 // construct edges
 connectVertices (routesDatasetName); 
 
 }
 
-// custom deconstructor
+// custom destructor
 Graph::~Graph(){
 
 // deallocate edges
@@ -37,20 +39,20 @@ for (list<Route*> routeList: *Adj ){
 delete[]  Adj;
 
 //deallocate vertices
-for (Airport* airport: *V){
+for (Airport* airport: V){
     delete airport; 
 }
-V->clear(); 
-V->shrink_to_fit(); // shrink vector to capacity 0
+V.clear(); 
+V.shrink_to_fit(); // shrink vector to capacity 0
 }
 
 
 // This helper function connects all airports (vertices) that have a connecting route (edge) 
 void Graph::connectVertices (const string& routesDatasetName) {
 
-vector<Route*>* routes = FileIO::loadRoutes (routesDatasetName);
+vector<Route*> routes = FileIO::loadRoutes (routesDatasetName);
 
-for (Route* route: *routes)
+for (Route* route: routes)
    addEdge (route->getRouteAirports().first , route); 
 
 }

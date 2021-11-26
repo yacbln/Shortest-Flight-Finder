@@ -6,8 +6,8 @@ using std::vector;
 using std::ifstream;
 
 namespace FileIO {
-    vector<Airport*>* loadAirports(const string& airport_filename) {
-        vector<Airport*>* airports= new vector<Airport*>;
+    vector<Airport*> loadAirports(const string& airport_filename) {
+        vector<Airport*> airports;
         ifstream my_file(airport_filename);
         vector<string> line;
         
