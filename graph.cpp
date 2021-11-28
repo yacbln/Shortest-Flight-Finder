@@ -3,17 +3,20 @@
 
 #include <utility>
 
-using std::pair;
-using std::vector;
+
 
 // custom constuctor: build the whole graph based on airports and routes datasets
 Graph::Graph(const string& airportsDatasetName , const string& routesDatasetName){
 
 //load airports 
  vector<Airport*> airportsVector = FileIO::loadAirports (airportsDatasetName); 
- for (Airport* airport: airportsVector)
-     V.push_back(airport); 
-
+ 
+ unsigned index = 0; 
+ for (Airport* airport: airportsVector){
+      V.push_back(airport); 
+      airportMap.insert( make_pair ( airport->getAirportID() , make_pair(airport, index)) ); 
+      index ++; 
+ }
 
 //set the length of adjacency list equal to number of vertices (airports)
 Adj = new list<Route*>[V.size()]; 
@@ -27,13 +30,14 @@ connectVertices (routesDatasetName);
 Graph::~Graph(){
 
 // deallocate edges
-for (list<Route*> routeList: *Adj ){
+for (unsigned i=0; i< V.size(); i++){
 
-   for (Route* route: routeList){
+   for (Route* route: Adj[i]){
       delete route; 
    }
-   routeList.clear(); // clear all content and set size of list to 0
-   std::list<Route*>().swap(routeList); // set list capacity to 0 
+
+   Adj[i].clear(); // clear all content and set size of list to 0
+   std::list<Route*>().swap(Adj[i]); // set list capacity to 0 
 }
 
 delete[]  Adj;
@@ -44,26 +48,49 @@ for (Airport* airport: V){
 }
 V.clear(); 
 V.shrink_to_fit(); // shrink vector to capacity 0
-}
 
+//deallocate map
+// TO DO
+}
 
 // This helper function connects all airports (vertices) that have a connecting route (edge) 
 void Graph::connectVertices (const string& routesDatasetName) {
 
-vector<Route*> routes = FileIO::loadRoutes (routesDatasetName);
+vector<Route*> routes = FileIO::loadRoutes (routesDatasetName, V);
 
 for (Route* route: routes)
    addEdge (route->getRouteAirports().first , route); 
 
 }
 
-
 // This helper function connects two airports with and edge (a route)
 void Graph::addEdge (Airport* sourceAirport, Route* outGoingRoute){
-
-// since the IDs of airports are unique, incrementing by 1 and starts from 1, we will use them to
-// represent index of an airport in the adjacency list after substracting 1
-
-Adj[sourceAirport->getAirportID() -1].push_back (outGoingRoute);
-
+//use airportMap to retrieve adjacency list index corresponding to source airport
+Adj[airportMap[sourceAirport->getAirportID()].second].push_back (outGoingRoute);
 }
+
+// FUNCTIONS HERE
+Airport* Graph::getAirportWithID (unsigned airportID){
+
+if (airportMap.find(airportID) == airportMap.end())  return nullptr; 
+
+return airportMap[airportID].first;
+}
+
+
+
+vector<Airport*> Graph::getOutNeighbors( Airport* sourceAirport){
+
+vector<Airport*> outNeighbors; 
+
+// if airport is not found in graph, return an empty vector 
+if (airportMap.find(sourceAirport->getAirportID()) == airportMap.end())  return outNeighbors; 
+
+//else
+unsigned adjListIndex = airportMap[sourceAirport->getAirportID()].second; 
+for (Route* route: Adj[adjListIndex])
+     outNeighbors.push_back(route->getRouteAirports().second);
+
+return outNeighbors;
+}
+

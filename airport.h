@@ -1,8 +1,7 @@
 #pragma once 
 
 #include <string>
-
-using namespace std;
+using std::string;
 
 /* This class wraps info about an airport */ 
 class Airport {
@@ -10,12 +9,20 @@ class Airport {
 public:
      // custom constructor 
      Airport(unsigned id, string name, string city, string country, double latitude, double longitude);
+     
+     //copy constructor
+     Airport(const Airport& other); 
+     
+     // two airports are equal if the share the same ID
+     bool operator==(const Airport& other) const ;
 
-
-     //put getters if needed  
-     unsigned getAirportID(); 
-     double getAirportLatitude(); 
-     double getAirportLongitude();
+     //getters 
+     unsigned getAirportID() const; 
+     string getAirportName() const;
+     string getAirportCity() const;
+     string getAirportCountry() const;
+     double getAirportLatitude() const; 
+     double getAirportLongitude() const;
 
 private:     
 

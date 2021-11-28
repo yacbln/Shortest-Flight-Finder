@@ -13,12 +13,24 @@ Route:: Route(Airport* sourceAirport, Airport* destinationAirport){
     _routeDistance = calculateRouteDistance ( sourceAirport, destinationAirport);
 }
 
+//copy constructor (no need to delete original airport objects (vertices))
+Route::Route(const Route& other){
+  _sourceAirport = other.getRouteAirports().first; 
+  _destinationAirport = other.getRouteAirports().second; 
+}
+
 // custom destructor
 Route:: ~Route() {
   delete _sourceAirport; 
   delete _destinationAirport; 
 } 
 
+// check if two routes are same
+bool Route::operator==(const Route& other) const {
+
+return ( _sourceAirport == other.getRouteAirports().first && _destinationAirport == other.getRouteAirports().second ) ;
+
+}
 // Using "Haversine" formula to calculate the distance between two airports based on their longitude and latitude 
 double Route::calculateRouteDistance  (Airport* sourceAirport , Airport* destinationAirport){
 
@@ -33,7 +45,7 @@ double Route::calculateRouteDistance  (Airport* sourceAirport , Airport* destina
 }
 
 // get pair.first ==> source airport*   pair.second ==> destination airport*
-pair <Airport*, Airport*> Route::getRouteAirports (){
+pair <Airport*, Airport*> Route::getRouteAirports () const{
 
     return make_pair(_sourceAirport, _destinationAirport);
 }
