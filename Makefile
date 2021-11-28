@@ -20,8 +20,5 @@ route.o: route.cpp
 fileio.o: fileio.cpp
 	$(C) $(FLAGS) fileio.cpp
 
-dataset.o: dataset.cpp
-	$(C) $(FLAGS) dataset.cpp
-
 clean:
 	rm -f *.o
