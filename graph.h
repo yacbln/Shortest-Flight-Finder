@@ -35,7 +35,7 @@ class Graph {
     //This function returns all destination Airports (Adjacent outgoing nodes) for a source Airport
     vector<Airport*> getOutNeighbors( Airport* sourceAirport);
     
-
+    vector<Route*> BFS(Airport* start, Airport* dest);
 
     //helper functions
     // This function populates the adjacency list based on Routes dataset
@@ -51,7 +51,4 @@ class Graph {
     // This map takes an airport ID as KEY 
     // and returns a pair <Pointer to airport object, index in adjacency list> as VALUE
     unordered_map <unsigned, pair<Airport*, unsigned>> airportMap;
-
-
-        
 };
