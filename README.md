@@ -38,3 +38,6 @@ CS225 Final Project Fall 2021
 2) Compile the code by running the command **make clean test**.
 
 3) Run **./test**
+
+**Tests run in the test file:**
+
