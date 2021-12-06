@@ -3,7 +3,7 @@ CS225 Final Project Fall 2021
 
 **Instructions:**
 
-\1) Compile the code by running the command **make clean**
+1) Compile the code by running the command **make clean**
 
-\2) Run **./main**
+2) Run **./main**
 
