@@ -23,16 +23,16 @@ CS225 Final Project Fall 2021
 
 **Execution Instructions:**
 
-0) Download the code and navigate to the appropriate directory.
+1) Download the code and navigate to the appropriate directory.
 
-1) Compile the code by running the command **make clean**.
+2) Compile the code by running the command **make clean**.
 
-2) Run **./main \[\] \[\]**
+3) Run **./main \[\] \[\]**
 
 **Testing Instructions:**
 
-0) Download the code and navigate to the appropriate directory.
+1) Download the code and navigate to the appropriate directory.
 
-1) Compile the code by running the command **make clean test**.
+2) Compile the code by running the command **make clean test**.
 
-2) Run **./test**
+3) Run **./test**
