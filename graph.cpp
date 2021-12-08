@@ -93,8 +93,3 @@ vector<Airport*> Graph::getOutNeighbors( Airport* sourceAirport){
 
     return outNeighbors;
 }
-
-vector<Route*> Graph::BFS(Airport* start, Airport* dest)
-{
-    return vector<Route*>();
-}

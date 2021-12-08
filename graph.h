@@ -8,12 +8,14 @@
 #include <string>
 #include <unordered_map>
 #include <utility>
+#include <queue>
 
 using std::vector; 
 using std::list; 
 using std::string; 
 using std::unordered_map; 
 using std::pair;
+using std::queue;
 
 class Graph {
 
@@ -36,6 +38,7 @@ class Graph {
     vector<Airport*> getOutNeighbors( Airport* sourceAirport);
     
     vector<Route*> BFS(Airport* start, Airport* dest);
+    vector<Route*> Djikstra(Airport* start, Airport* dest);
 
     //helper functions
     // This function populates the adjacency list based on Routes dataset

@@ -14,8 +14,9 @@ main.o: main.cpp
 test.o: test.cpp
 	$(C) $(FLAGS) test.cpp
 
-graph.o: graph.cpp
-	$(C) $(FLAGS) graph.cpp
+#all of these files make up the graph class, so I compiled them to one object file, I might separate them later
+graph.o: graph.cpp BFS.cpp Djikstra.cpp
+	$(C) $(FLAGS) graph.cpp BFS.cpp Djikstra.cpp
 
 airport.o: airport.cpp
 	$(C) $(FLAGS) airport.cpp
