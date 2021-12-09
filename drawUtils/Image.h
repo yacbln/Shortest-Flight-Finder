@@ -51,7 +51,6 @@ void scale(double factor);
 //scale the image to fit within the size "w" * "h"
 void scale(unsigned w, unsigned h); 
 
-
 //added by me
 void scalexy (unsigned newWid, unsigned newHei);
 };

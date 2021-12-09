@@ -117,6 +117,9 @@ namespace cs225 {
       */
     void resize(unsigned int newWidth, unsigned int newHeight);
 
+    //crops wC pixels from top and bottom, and hC pixels from left and right
+    void crop (unsigned int wC , unsigned int hC);
+
   private:
     unsigned int width_;            /*< Width of the image */
     unsigned int height_;           /*< Height of the image */

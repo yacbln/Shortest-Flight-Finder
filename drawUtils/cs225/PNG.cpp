@@ -211,6 +211,34 @@ namespace cs225 {
     imageData_ = newImageData;
   }
 
+  void PNG::crop (unsigned int wC , unsigned int hC){
+    
+    unsigned newHeight = height_ - (2*hC);
+    unsigned newWidth = width_-(2*wC);
+    HSLAPixel * newImageData = new HSLAPixel[newWidth * newHeight];
+
+    // Copy the current data to the new image data, using the existing pixel
+    // for coordinates within the bounds of the old image size
+    for (unsigned x = 0; x < newWidth; x++) {
+      for (unsigned y = 0; y < newHeight; y++) {
+        
+          HSLAPixel & oldPixel = this->getPixel(wC+ x, hC+ y);
+          HSLAPixel & newPixel = newImageData[ (x + (y * newWidth)) ];
+          newPixel = oldPixel;
+        
+      }
+    }
+
+    // Clear the existing image
+    delete[] imageData_;
+
+    // Update the image to reflect the new image size and data
+    width_ = newWidth;
+    height_ = newHeight;
+    imageData_ = newImageData;
+
+  }
+
   std::ostream & operator << ( std::ostream& os, PNG const& png ) {
     std::hash<double> hashFunction;
     std::size_t hash = 0;

@@ -3,6 +3,7 @@
 #include "airport.h"
 #include "route.h"
 #include "fileio.h"
+#include "shortestPathVisualizer.h"
 
 #include <iostream>
 #include <vector>
@@ -41,16 +42,26 @@ int main(){
 
    Airport* airport79 = graph->getAirportWithID(79); // airport with ID 79
 
-   if (airport79 == nullptr) cout<< "\nThere is not airport with this ID"; 
-   else{
+
    vector<Airport*> outNeighbors = graph->getOutNeighbors(airport79); 
    cout << "\nOutgoing Neighbor Airports for Airport with ID: " << airport79->getAirportID() << " are airports with IDs:  ";
    for (Airport* airport: outNeighbors)
        cout<< airport->getAirportID() << " ";    
 
    cout << " \n ==> It has direct flight to " << outNeighbors.size() << "  airports \n";
-   }
+   
+    //////// test map 
+  vector<Airport*> mapAirports; 
+  mapAirports.push_back(graph->getAirportWithID(3361)) ; // must show in Sydney
+  mapAirports.push_back(graph->getAirportWithID(210)) ; // must show in algier
+  mapAirports.push_back(graph->getAirportWithID(3364)) ; // must show in Beijing
+  mapAirports.push_back(graph->getAirportWithID(820)) ; // must show in Johannesburg
+  mapAirports.push_back(graph->getAirportWithID(1382)) ; // must show in Paris
+  mapAirports.push_back(graph->getAirportWithID(3830)) ; // must show in chicago
+  
 
+   Image map = drawShortestPath(mapAirports); 
 
+   map.writeToFile("map.png");
    return 0;
 }
