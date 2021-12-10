@@ -43,7 +43,7 @@ for (unsigned j=0; j<nbrAirports; j++){
 //draw lines first
 cs225::HSLAPixel orange(32,0.97,0.46,1);
 
-for (int a=0; a< (nbrAirports -1); a++){
+for (int a=0; a< (int)(nbrAirports -1); a++){
 
 int x1 = dimensions[a].first; 
 int y1 = dimensions[a].second; 
@@ -60,7 +60,7 @@ if ((maxx - minx)<3){
 for (int j=miny; j<maxy; j++){
 
     for (int k= 3; k <7; k++){
-    if ((x2 + k) < mapWidth){
+    if ((x2 + k) < (int)mapWidth){
         worldMap.getPixel(x2+k,j+5) = orange;    
     }
 }
@@ -74,7 +74,7 @@ for (int i = minx; i< maxx; i++){
      
     if (a==0) std::cout << "\nj= "<< j;
     for (int k= 3; k <7; k++){
-    if ((j + k) < mapHeight){
+    if ((j + k) < (int)mapHeight){
 
         worldMap.getPixel(i+4,j+k) = orange; 
     
