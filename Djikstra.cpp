@@ -20,11 +20,13 @@ vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
     }
     dist[start->getAirportID()] = 0;
     
-    vector<Airport*> neighbours = getOutNeighbors(start);
+    vector<Airport*> neighbours = this->getOutNeighbors(start);
     
-    for (Airport* a : neighbours) {
-        pq.push(Adj[airportMap[a->getAirportID()].second]);
-    }
+    // get list of outgoing routes from airport (start) and push every route to pq
+    list<Route*> outGoingRoutes = this->getOutRoutes(start) 
+    for (Route* route : outGoingRoutes)
+        pq.push(route);
+   
     
     vector<Airport*> labeled;
     
