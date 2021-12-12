@@ -9,16 +9,34 @@ using std::map;
 
 vector<unsigned> Graph::Dijkstra(Airport* start, Airport* dest)
 {
-    //auto comp = []
+    vector<unsigned> path; // Vector of IDs
     priority_queue<Route*, vector<Route*>, std::greater<Route*>> pq;
     
     map<unsigned, double> dist;
-    map<unsigned, int> prev; // mapping two IDs together
+    map<unsigned, unsigned> prev; // mapping two IDs together
     
     for (Airport* a : V) {
-        dist[a->getAirportID()] = std::numeric_limits<double>::max();
-        prev[a->getAirportID()] = -1;
+        dist[a->getAirportID()] = std::numeric_limits<double>::infinity();
     }
     dist[start->getAirportID()] = 0;
+    
+    vector<Airport*> neighbours = getOutNeighbors(start);
+    
+    for (Airport* a : neighbours) {
+        pq.push(Adj[airportMap[a->getAirportID()].second]);
+    }
+    
+    vector<Airport*> labeled;
+    
+    while (!pq.empty()) {
+        Route* r = pq.top();
+        pq.pop();
+        
+        labeled.push_back(r->getRouteAirports().second);
+        
+        if (r.getRouteDistance() < dist[r.getRouteAirports().second->getAirporttID()]) {
+            
+        }
+    }
     return vector<unsigned>();
 }

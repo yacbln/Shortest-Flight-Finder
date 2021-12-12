@@ -2,6 +2,7 @@
 
 #include "airport.h"
 #include <utility>
+#include <string>
 
 using std::pair; 
 using std::make_pair;
