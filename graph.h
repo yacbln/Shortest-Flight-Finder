@@ -43,7 +43,8 @@ class Graph {
     list<Route*> getOutRoutes (Airport* airport); 
     
     
-    vector<Route*> BFS(Airport* start, Airport* dest);
+    vector<Airport*> BFS(Airport* start, unordered_map<Airport*, bool>& visited);    //helper for the full traversal returns traversal of connected component
+    vector<Airport*> BFS(); //this is more of a breadth first traversal than a search
     vector<Airport*> Dijkstra(Airport* start, Airport* dest);
     
     //helper functions
