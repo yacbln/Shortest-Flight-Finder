@@ -49,7 +49,6 @@ int x1 = dimensions[a].first;
 int y1 = dimensions[a].second; 
 int x2 = dimensions[a+1].first; 
 int y2 = dimensions[a+1].second; 
-std::cout << "\na= "<< a;
 int minx = (x1>x2)? x2: x1;
 int maxx = (minx == x1)? x2: x1;
 int miny = (y1>y2)? y2: y1;
@@ -67,31 +66,23 @@ for (int j=miny; j<maxy; j++){
 }
 } else{
 for (int i = minx; i< maxx; i++){
+    
     int j =0; 
-    if (a==0) std::cout << "\ny1= "<< y1<< " y2= "<< y2<<" x2= "<< x2<<" x1= "<< x1;
     if (slope < 0) j = (int)( slope * ( i - minx)) + maxy; 
     else j = (int)( slope * ( i - minx)) + miny;
-     
-    if (a==0) std::cout << "\nj= "<< j;
+    
     for (int k= 3; k <7; k++){
     if ((j + k) < (int)mapHeight){
-
         worldMap.getPixel(i+4,j+k) = orange; 
-    
     }
     }
-
-   
 }
 }
 }
-
-worldMap.writeToFile("worldMap.png");
 
 StickerSheet flightMap(worldMap, nbrAirports* 100);
 
 for (unsigned j=0; j<nbrAirports; j++){
- 
  //draw points
  int x= dimensions[j].first;
  int y= dimensions[j].second;
@@ -112,7 +103,6 @@ for (char c: city){
     xCity+=5;
     if (c== 'i' || c == 'l' || c == 'j') xCity -=3; 
 }
-
 }
 
 finalMap = flightMap.render(); 
