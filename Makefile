@@ -5,11 +5,14 @@ LDFLAGS=-std=c++1y -stdlib=libc++ -lc++abi	#flags for linker (grabs .o files and
 all: main.o graph.o airport.o route.o fileio.o BFS.o Djikstra.o cs225.a Image.o StickerSheet.o shortestPathVisualizer.o
 	$(C) $(LDFLAGS) main.o graph.o airport.o route.o fileio.o BFS.o Djikstra.o cs225.a Image.o StickerSheet.o shortestPathVisualizer.o -o main
 
-test: test.o graph.o airport.o route.o fileio.o BFS.o Djikstra.o cs225.a Image.o StickerSheet.o shortestPathVisualizer.o
-	$(C) $(LDFLAGS) test.o graph.o airport.o route.o fileio.o BFS.o Djikstra.o cs225.a Image.o StickerSheet.o shortestPathVisualizer.o -o test
+test: test.o graph.o airport.o route.o fileio.o BFS.o Djikstra.o cs225.a Image.o StickerSheet.o shortestPathVisualizer.o catchmain.o
+	$(C) $(LDFLAGS) test.o graph.o airport.o route.o fileio.o BFS.o Djikstra.o cs225.a Image.o StickerSheet.o shortestPathVisualizer.o catchmain.o -o test
 
 main.o: main.cpp
 	$(C) $(FLAGS) main.cpp
+
+catchmain.o: drawUtils/cs225/catch/catchmain.cpp
+	$(C) $(FLAGS) drawUtils/cs225/catch/catchmain.cpp
 
 test.o: test.cpp
 	$(C) $(FLAGS) test.cpp
