@@ -9,6 +9,8 @@
 #include <unordered_map>
 #include <utility>
 #include <queue>
+#include <map>
+#include <limits>
 
 using std::vector; 
 using std::list; 
@@ -38,7 +40,7 @@ class Graph {
     vector<Airport*> getOutNeighbors( Airport* sourceAirport);
     
     vector<Route*> BFS(Airport* start, Airport* dest);
-    vector<Route*> Djikstra(Airport* start, Airport* dest);
+    vector<unsigned> Dijkstra(Airport* start, Airport* dest);
 
     //helper functions
     // This function populates the adjacency list based on Routes dataset
@@ -48,7 +50,7 @@ class Graph {
 
     private:
 
-    vector<Airport*> V ; 
+    vector<Airport*> V; 
     list<Route*>* Adj; 
     
     // This map takes an airport ID as KEY 

@@ -31,6 +31,11 @@ bool Route::operator==(const Route& other) const {
 return ( _sourceAirport == other.getRouteAirports().first && _destinationAirport == other.getRouteAirports().second ) ;
 
 }
+
+bool Route::operator>(const Route& other) const {
+    return _routeDistance > other._routeDistance;
+}
+
 // Using "Haversine" formula to calculate the distance between two airports based on their longitude and latitude 
 double Route::calculateRouteDistance  (Airport* sourceAirport , Airport* destinationAirport){
 
