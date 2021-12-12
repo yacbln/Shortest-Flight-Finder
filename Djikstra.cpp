@@ -7,9 +7,9 @@ using std::map;
  * This includes the Dijkstra functions for the graph
  */
 
-vector<unsigned> Graph::Dijkstra(Airport* start, Airport* dest)
+vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
 {
-    vector<unsigned> path; // Vector of IDs
+    vector<Airport*> path; // to return
     priority_queue<Route*, vector<Route*>, std::greater<Route*>> pq;
     
     map<unsigned, double> dist;
@@ -38,5 +38,5 @@ vector<unsigned> Graph::Dijkstra(Airport* start, Airport* dest)
             
         }
     }
-    return vector<unsigned>();
+    return path;
 }

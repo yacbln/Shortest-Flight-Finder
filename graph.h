@@ -40,7 +40,7 @@ class Graph {
     vector<Airport*> getOutNeighbors( Airport* sourceAirport);
     
     vector<Route*> BFS(Airport* start, Airport* dest);
-    vector<unsigned> Dijkstra(Airport* start, Airport* dest);
+    vector<Airport*> Dijkstra(Airport* start, Airport* dest);
 
     //helper functions
     // This function populates the adjacency list based on Routes dataset
