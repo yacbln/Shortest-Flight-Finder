@@ -40,7 +40,7 @@ class Graph {
     vector<Airport*> getOutNeighbors( Airport* sourceAirport);
     
     // this function returns a (linked)-list of outgoing routes corresponding to an airport
-    list<Route*> getOutRoutes (unsigned airportID); 
+    list<Route*> getOutRoutes (Airport* airport); 
     
     
     vector<Route*> BFS(Airport* start, Airport* dest);
