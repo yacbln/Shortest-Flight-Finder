@@ -10,7 +10,7 @@ using std::map;
 vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
 {
     vector<Airport*> path; // to return
-    priority_queue<Route*, vector<Route*>, std::greater<Route*>> pq;
+    priority_queue<Route, vector<Route>, std::greater<Route>> pq;
     
     map<unsigned, double> dist;
     map<unsigned, unsigned> prev; // mapping two IDs together
@@ -25,18 +25,18 @@ vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
     // get list of outgoing routes from airport (start) and push every route to pq
     list<Route*> outGoingRoutes = this->getOutRoutes(start);
     for (Route* route : outGoingRoutes)
-        pq.push(route);
+        pq.push(*route);
    
     
     vector<Airport*> labeled;
     
     while (!pq.empty()) {
-        Route* r = pq.top();
+        Route r = pq.top();
         pq.pop();
         
-        labeled.push_back(r->getRouteAirports().second);
+        labeled.push_back(r.getRouteAirports().second);
         
-        if (r->getRouteDistance() < dist[r->getRouteAirports().second->getAirportID()]) {
+        if (r.getRouteDistance() < dist[r.getRouteAirports().second->getAirportID()]) {
             
         }
     }
