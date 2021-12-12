@@ -93,3 +93,10 @@ vector<Airport*> Graph::getOutNeighbors( Airport* sourceAirport){
 
     return outNeighbors;
 }
+
+// this method return a (linked)-list of outgoing routes corresponding to an airport
+list<Route*> Graph: getOutRoutes (unsigned airportID){
+
+return Adj[airportMap[airportID].second]; 
+
+}
