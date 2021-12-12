@@ -17,9 +17,8 @@ TEST_CASE("Simple Distance Check","[weight=1]"){
 
     Route* ORDtoCDG = new Route (ORD, CDG); 
 
-    double dist = ORDtoCDG->getRouteDistance();
-
-    REQUIRE((ORDtoCDG->getRouteDistance() == dist));
+    int dist = ORDtoCDG->getRouteDistance();
+    REQUIRE((4138 == dist));
 }
 
 TEST_CASE("Route Class Works","[weight=1]"){
@@ -54,4 +53,9 @@ TEST_CASE("Visualization works","[weight=1]"){
     Image map = drawShortestPath(mapAirports); 
 
     map.writeToFile("map.png");
+}
+TEST_CASE("BFS Test","[weight=1]"){
+    Graph* graph = new Graph( "airports_clean.csv" , "routes_clean.csv");
+    REQUIRE(6033 == graph->BFS().size());
+    //There are 6033 airports, so if BFS works it should have 6033 airports.
 }
