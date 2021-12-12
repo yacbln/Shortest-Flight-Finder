@@ -23,7 +23,7 @@ vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
     vector<Airport*> neighbours = this->getOutNeighbors(start);
     
     // get list of outgoing routes from airport (start) and push every route to pq
-    list<Route*> outGoingRoutes = this->getOutRoutes(start) 
+    list<Route*> outGoingRoutes = this->getOutRoutes(start);
     for (Route* route : outGoingRoutes)
         pq.push(route);
    
