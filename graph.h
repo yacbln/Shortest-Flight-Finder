@@ -39,15 +39,19 @@ class Graph {
     //This function returns all destination Airports (Adjacent outgoing nodes) for a source Airport
     vector<Airport*> getOutNeighbors( Airport* sourceAirport);
     
+    // this function returns a (linked)-list of outgoing routes corresponding to an airport
+    list<Route*> getOutRoutes (unsigned airportID); 
+    
+    
     vector<Route*> BFS(Airport* start, Airport* dest);
     vector<Airport*> Dijkstra(Airport* start, Airport* dest);
-
+    
     //helper functions
     // This function populates the adjacency list based on Routes dataset
     void connectVertices (const string& routesDatasetName);
     //This function assign a route to an airport
     void addEdge (Airport* sourceAirport, Route* outGoingRoute); 
-
+    
     private:
 
     vector<Airport*> V; 
