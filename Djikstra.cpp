@@ -36,7 +36,7 @@ vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
         
         labeled.push_back(r->getRouteAirports().second);
         
-        if (r.getRouteDistance() < dist[r.getRouteAirports().second->getAirporttID()]) {
+        if (r->getRouteDistance() < dist[r->getRouteAirports().second->getAirportID()]) {
             
         }
     }
