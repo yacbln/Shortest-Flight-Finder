@@ -20,13 +20,11 @@ vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
     }
     dist[start->getAirportID()] = 0;
     
-    vector<Airport*> neighbours = this->getOutNeighbors(start);
-    
     // get list of outgoing routes from airport (start) and push every route to pq
     list<Route*> outGoingRoutes = this->getOutRoutes(start);
-    for (Route* route : outGoingRoutes)
+    for (Route* route : outGoingRoutes) {
         pq.push(*route);
-   
+    }
     
     vector<Airport*> labeled;
     
@@ -34,11 +32,29 @@ vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
         Route r = pq.top();
         pq.pop();
         
-        labeled.push_back(r.getRouteAirports().second);
+        labeled.push_back(r.getRouteAirports().first);
         
         if (r.getRouteDistance() < dist[r.getRouteAirports().second->getAirportID()]) {
+            dist[r.getRouteAirports().second->getAirportID()] = dist[r.getRouteAirports().first->getAirportID()]
+                    + r.getRouteDistance();
+            prev[r.getRouteAirports().second->getAirportID()] = r.getRouteAirports().first->getAirportID();
             
+            for (Airport* a : getOutNeighbours(r.getRouteAirports().second)) {
+                if (labeled.find(r.etRouteAirports().second) == labeled.end()) {
+                    pq.push(Route(r.getRouteAirports().second, a));
+                }
+            }
         }
     }
+    
+    if (dist[dest->getAirportID()] == std::numeric_limits<double>::infinity()) {
+        path.push_back(NULL);
+    }
+    
+    while (dist[dest->getAirportID()] != 0) {
+        path.push_back(dest);
+        dest = getAirportWithID(prev[dest->getAirportID()]);
+    }
+    path.push_back(dest);
     return path;
 }
