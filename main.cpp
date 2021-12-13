@@ -9,70 +9,28 @@
 #include <utility>
 
 using std::cout;
+using std::endl;
 
-int main(){
+int main(int argc, char** argv){
+    if(argc != 3)   //argv[0] is "./main"
+    {
+        cout << "You must enter 2 separate airport keys" << endl;
+        return 1;
+    }
 
-    Airport* ORD = new Airport (3830, "O'hare Airport", "Chicago", "USA", 41.9786, -87.9048 );
+    Graph graph("airports_clean.csv", "routes_clean.csv");
+    Airport* start = graph.getAirportWithID(std::stoul(argv[1]));
+    Airport* fin = graph.getAirportWithID(std::stoul(argv[2]));
+    if(start == 0 || fin == 0)
+    {
+        cout << "Please enter valid airport IDs, these can be looked up as the first column of the airport csv" << endl;
+    }
 
-    Airport* CDG = new Airport (1381, "Charles Degaulle", "Paris", "France", 49.012798, 2.55 );
+    vector<Airport*> ports = graph.Dijkstra(start, fin);
 
-    Route* ORDtoCDG = new Route (ORD, CDG);
-
-    cout << "Distance from ORD to CDG is " << ORDtoCDG->getRouteDistance() << " miles.\n\n";
-
-
-    std::vector<Airport*> airports = FileIO::loadAirports("airports_clean.csv");
-
-    cout << "\nAirport 1: " << airports[0]->getAirportID() << "  " <<  airports[0]->getAirportLatitude() <<
-         "  " << airports[0]->getAirportLongitude() << " \n";
-
-    std::vector<Route*> routes = FileIO::loadRoutes("routes_clean.csv", airports);
-
-    //check route number 7 for example 
-    Airport* source = routes[6]->getRouteAirports().first;
-    Airport* distination = routes[6]->getRouteAirports().second;
-
-    cout << "\nRoute 7: " << source->getAirportID() << " --> " <<  distination->getAirportID() << " \n";
-
-
-    Graph* graph = new Graph( "airports_clean.csv" , "routes_clean.csv");
-
-    // as a simple test we will output the outgoing airport neighbors of a certain airport and check that with dataset
-
-    Airport* airport79 = graph->getAirportWithID(79); // airport with ID 79
-
-
-    vector<Airport*> outNeighbors = graph->getOutNeighbors(airport79);
-    cout << "\nOutgoing Neighbor Airports for Airport with ID: " << airport79->getAirportID() << " are airports with IDs:  ";
-    for (Airport* airport: outNeighbors)
-        cout<< airport->getAirportID() << " ";
-
-    cout << " \n ==> It has direct flight to " << outNeighbors.size() << "  airports \n";
-
-    //////// test map 
-    vector<Airport*> mapAirports;
-    mapAirports.push_back(graph->getAirportWithID(3361)) ; // must show in Sydney
-    mapAirports.push_back(graph->getAirportWithID(210)) ; // must show in algier
-    mapAirports.push_back(graph->getAirportWithID(3364)) ; // must show in Beijing
-    mapAirports.push_back(graph->getAirportWithID(820)) ; // must show in Johannesburg
-    mapAirports.push_back(graph->getAirportWithID(1382)) ; // must show in Paris
-    mapAirports.push_back(graph->getAirportWithID(3830)) ; // must show in chicago
-
-
-    Image map = drawShortestPath(mapAirports);
-
+    //draw map
+    Image map = drawShortestPath(ports);
     map.writeToFile("map.png");
-    delete graph;
-    delete ORD;
-    delete CDG;
-    delete ORDtoCDG;
-    for(auto port : airports)
-    {
-        delete port;
-    }
-    for(auto r : routes)
-    {
-        delete r;
-    }
+
     return 0;
 }
