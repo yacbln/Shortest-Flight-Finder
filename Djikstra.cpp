@@ -39,8 +39,8 @@ vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
                     + r.getRouteDistance();
             prev[r.getRouteAirports().second->getAirportID()] = r.getRouteAirports().first->getAirportID();
             
-            for (Airport* a : getOutNeighbours(r.getRouteAirports().second)) {
-                if (labeled.find(r.etRouteAirports().second) == labeled.end()) {
+            for (Airport* a : getOutNeighbors(r.getRouteAirports().second)) {
+                if (std::find(labeled.begin(), labeled.end(), r.getRouteAirports().second) == labeled.end()) {
                     pq.push(Route(r.getRouteAirports().second, a));
                 }
             }
