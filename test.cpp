@@ -19,6 +19,9 @@ TEST_CASE("Simple Distance Check","[weight=1]"){
 
     int dist = ORDtoCDG->getRouteDistance();
     REQUIRE((4138 == dist));
+    delete ORD;
+    delete CDG;
+    delete ORDtoCDG;
 }
 
 TEST_CASE("Route Class Works","[weight=1]"){
