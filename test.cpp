@@ -80,8 +80,6 @@ TEST_CASE("Dijkstra Test No Path", "[weight=1]") {
     
     REQUIRE(graph->Dijkstra(ORD, XYZ).empty() == true); // vector should be empty (no path)
     
-    // seg faulting
-    // solution: debug dijkstra function
     delete graph;
 }
 
@@ -96,9 +94,11 @@ TEST_CASE("Dijkstra Test Path Exist", "[weight=1]") {
     // Route route1(ORD,BEIJ);
     // Route route2(ORD, CDG); 
     // cout << route1.getRouteDistance()<< " "<< route2.getRouteDistance() <<"\n";
+    
+    vector<Airport*> airports = graph->Dijkstra(ORD, ALG);
 
     cout << "depart at --> ";
-    for (Airport* airport: graph->Dijkstra(ORD, ALG)) {
+    for (Airport* airport: airports) {
         cout<<airport->getAirportName() <<" --> ";
     }
     cout << "arrived";
@@ -120,6 +120,30 @@ TEST_CASE("Check if greater") {
     Route r(AER, ASF);
     REQUIRE(ORDtoCDG > r);
     
+    delete ORD;
+    delete CDG;
+    delete AER;
+    delete ASF;
+}
+
+TEST_CASE("Priority Queue") {
+    Airport* ORD = new Airport (3830, "O'hare Airport", "Chicago", "USA", 41.9786, -87.9048 );
+    
+    Airport* CDG = new Airport (1381, "Charles Degaulle", "Paris", "France", 49.012798, 2.55 );
+    
+    Route ORDtoCDG(ORD, CDG);
+    
+    Airport* AER = new Airport(2965, "Sochi International Airport", "Sochi", "Russia", 43.449902, 39.9566);
+    Airport* ASF = new Airport(2966, "Astrakhan Airport", "Astrakhan", "Russia", 46.2832984924, 48.0063018799);
+    Route r(AER, ASF);
+
+    priority_queue<Route, vector<Route>, std::greater<Route>> pq;
+    pq.push(ORDtoCDG);
+    pq.push(r);
+    REQUIRE(r == pq.top());
+    pq.pop();
+    REQUIRE(ORDtoCDG == pq.top());
+
     delete ORD;
     delete CDG;
     delete AER;
