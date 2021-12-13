@@ -19,9 +19,6 @@ TEST_CASE("Simple Distance Check","[weight=1]"){
 
     int dist = ORDtoCDG->getRouteDistance();
     REQUIRE((4138 == dist));
-    delete ORD;
-    delete CDG;
-    delete ORDtoCDG;
 }
 
 TEST_CASE("Route Class Works","[weight=1]"){
@@ -61,4 +58,12 @@ TEST_CASE("BFS Test","[weight=1]"){
     Graph* graph = new Graph( "airports_clean.csv" , "routes_clean.csv");
     REQUIRE(6033 == graph->BFS().size());
     //There are 6033 airports, so if BFS works it should have 6033 airports.
+}
+
+TEST_CASE("Dijkstra Test", "[weight=1]") {
+    Graph* graph = new Graph( "airports_clean.csv" , "routes_clean.csv");
+    Airport* ORD = new Airport (3830, "O'hare Airport", "Chicago", "USA", 41.9786, -87.9048 );
+    Airport* CDG = new Airport (1381, "Charles Degaulle", "Paris", "France", 49.012798, 2.55 );
+    
+    std::cout << graph->Dijkstra(ORD, CDG)[0] << std::endl;
 }

@@ -55,8 +55,8 @@ class Graph {
     
     private:
 
-    vector<Airport*> V; 
-    list<Route*>* Adj; 
+    vector<Airport*> V;
+    list<Route*>* Adj;
     
     // This map takes an airport ID as KEY 
     // and returns a pair <Pointer to airport object, index in adjacency list> as VALUE
