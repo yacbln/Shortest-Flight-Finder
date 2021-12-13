@@ -24,6 +24,7 @@ Route(const Route& other);
 // check if two routes are same
 bool operator==(const Route& other) const;
 bool operator>(const Route& other) const;
+bool operator<(const Route& other) const;
 
 // Using "Haversine" formula to calculate the distance between two airports based on their longitude and latitude 
 double calculateRouteDistance  (Airport* sourceAirport , Airport* destinationAirport); 

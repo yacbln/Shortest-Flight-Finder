@@ -48,7 +48,7 @@ vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
     }
     
     if (dist[dest->getAirportID()] == std::numeric_limits<double>::infinity()) {
-        path.push_back(NULL);
+        return path;
     }
     
     while (dist[dest->getAirportID()] != 0) {
@@ -56,5 +56,6 @@ vector<Airport*> Graph::Dijkstra(Airport* start, Airport* dest)
         dest = getAirportWithID(prev[dest->getAirportID()]);
     }
     path.push_back(dest);
+    std::reverse(path.begin(), path.end());
     return path;
 }
