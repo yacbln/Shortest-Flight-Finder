@@ -27,6 +27,11 @@ int main(int argc, char** argv){
     }
 
     vector<Airport*> ports = graph.Dijkstra(start, fin);
+    for(Airport* p : ports)
+    {
+        cout << p->getAirportName() << " ";
+    }
+    cout << endl;
 
     //draw map
     Image map = drawShortestPath(ports);
