@@ -19,7 +19,7 @@ Route(Airport* sourceAirport, Airport* destinationAirport);
 Route(const Route& other); 
      
 // custom destructor since we need to manually delete member variables of type "Airport"
-~Route(); 
+//~Route(); 
 
 // check if two routes are same
 bool operator==(const Route& other) const;

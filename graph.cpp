@@ -30,15 +30,15 @@ Graph::Graph(const string& airportsDatasetName , const string& routesDatasetName
 Graph::~Graph(){
 
     // deallocate edges
-    for (unsigned i=0; i< V.size(); i++){
+    /*for (unsigned i=0; i< V.size(); i++){
 
        for (Route* route: Adj[i]){
           delete route; 
        }
 
        Adj[i].clear(); // clear all content and set size of list to 0
-       std::list<Route*>().swap(Adj[i]); // set list capacity to 0 
-    }
+       //std::list<Route*>().swap(Adj[i]); // set list capacity to 0 
+    }*/
 
     delete[]  Adj;
 
@@ -47,7 +47,7 @@ Graph::~Graph(){
         delete airport; 
     }
     V.clear(); 
-    V.shrink_to_fit(); // shrink vector to capacity 0
+    //V.shrink_to_fit(); // shrink vector to capacity 0
 
     //deallocate map
     // TO DO

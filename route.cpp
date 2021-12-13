@@ -19,12 +19,6 @@ Route::Route(const Route& other){
   _destinationAirport = other.getRouteAirports().second; 
 }
 
-// custom destructor
-Route:: ~Route() {
-  delete _sourceAirport; 
-  delete _destinationAirport; 
-} 
-
 // check if two routes are same
 bool Route::operator==(const Route& other) const {
 

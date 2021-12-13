@@ -63,5 +63,9 @@ int main(){
    Image map = drawShortestPath(mapAirports); 
 
    map.writeToFile("map.png");
+   delete graph;
+   delete ORD;
+   delete CDG;
+   delete ORDtoCDG;
    return 0;
 }
