@@ -72,13 +72,3 @@ TEST_CASE("BFS Test","[weight=1]"){
     
     delete graph;
 }
-
-TEST_CASE("Dijkstra Test", "[weight=1]") {
-    Graph* graph = new Graph( "airports_clean.csv" , "routes_clean.csv");
-    Airport* ORD = graph->getAirportWithID(3830);
-    Airport* CDG = graph->getAirportWithID(1381);
-    
-    std::cout << graph->Dijkstra(ORD, CDG)[0] << std::endl;
-    
-    delete graph; 
-}
