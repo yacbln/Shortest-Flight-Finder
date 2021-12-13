@@ -67,5 +67,13 @@ int main(){
    delete ORD;
    delete CDG;
    delete ORDtoCDG;
+   for(auto port : airports)
+   {
+       delete port;
+   }
+   for(auto r : routes)
+   {
+       delete r;
+   }
    return 0;
 }
