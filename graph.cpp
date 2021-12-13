@@ -31,9 +31,8 @@ Graph::~Graph(){
 
     // deallocate edges
     for (unsigned i=0; i< V.size(); i++){
-        
-       Adj[i].clear(); // clear all content and set size of list to 0
-       std::list<Route*>().swap(Adj[i]); // set list capacity to 0 
+        for(Route* r : Adj[i])
+            delete r;
     }
     delete[]  Adj;
 
