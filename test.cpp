@@ -34,10 +34,7 @@ TEST_CASE("Route Class Works","[weight=1]"){
     REQUIRE(source->getAirportID() == 4029);
     REQUIRE(destination->getAirportID() == 6969);
 
-    for(Airport* port : airports)
-        delete port;
-    for(Route* r : routes)
-        delete r;
+
 }
 
 TEST_CASE("Graph node neighbor works","[weight=1]"){
@@ -108,7 +105,7 @@ TEST_CASE("Dijkstra Test Path Exist", "[weight=1]") {
     
     // Wrong result: going from chicago to north africa take you all the way to china
     // solution: debug dijkstra funciton
-    delete graph;
+
 }
 
 TEST_CASE("Check if greater") {
@@ -128,15 +125,14 @@ TEST_CASE("Check if greater") {
     delete AER;
     delete ASF;
 }
-<<<<<<< HEAD
 
 TEST_CASE("Priority Queue") {
     Airport* ORD = new Airport (3830, "O'hare Airport", "Chicago", "USA", 41.9786, -87.9048 );
-    
+
     Airport* CDG = new Airport (1381, "Charles Degaulle", "Paris", "France", 49.012798, 2.55 );
-    
+
     Route ORDtoCDG(ORD, CDG);
-    
+
     Airport* AER = new Airport(2965, "Sochi International Airport", "Sochi", "Russia", 43.449902, 39.9566);
     Airport* ASF = new Airport(2966, "Astrakhan Airport", "Astrakhan", "Russia", 46.2832984924, 48.0063018799);
     Route r(AER, ASF);
@@ -153,5 +149,3 @@ TEST_CASE("Priority Queue") {
     delete AER;
     delete ASF;
 }
-=======
->>>>>>> f9c425613ce309707af305564d48735c37210ac6
