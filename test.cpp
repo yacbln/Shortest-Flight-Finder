@@ -73,12 +73,36 @@ TEST_CASE("BFS Test","[weight=1]"){
     delete graph;
 }
 
-TEST_CASE("Dijkstra Test", "[weight=1]") {
+TEST_CASE("Dijkstra Test No Path", "[weight=1]") {
     Graph* graph = new Graph( "airports_clean.csv" , "routes_clean.csv");
     Airport* ORD = graph->getAirportWithID(3830);
-    Airport* CDG = graph->getAirportWithID(1381);
+    Airport* XYZ = graph->getAirportWithID(1381); // this airport is standalone ie has no routes 
     
-    std::cout << graph->Dijkstra(ORD, CDG)[0] << std::endl;
-    
+    REQUIRE(0 == graph->Dijkstra(ORD, ALG)).size()); // vector should be empty (no path)
+
+    // seg faulting
+    // solution: debug dijkstra function
     delete graph; 
+}
+
+TEST_CASE("Dijkstra Test Path Exist", "[weight=1]") {
+    Graph* graph = new Graph( "airports_clean.csv" , "routes_clean.csv");
+    Airport* ORD = graph->getAirportWithID(3830);
+    //Airport* BEIJ = graph->getAirportWithID(3364); 
+    Airport* CDG = graph->getAirportWithID(1382);
+    Airport* ALG = graph->getAirportWithID(210); 
+    
+    /* Checked distances they are accurate */
+    // Route route1(ORD,BEIJ);
+    // Route route2(ORD, CDG); 
+    // cout << route1.getRouteDistance()<< " "<< route2.getRouteDistance() <<"\n";
+    
+    cout << "depart at --> ";
+    for (Airport* airport: graph->Dijkstra(ORD, ALG))
+        cout<<airport->getAirportName()<<" --> "; 
+    cout << "arrived";
+
+    // Wrong result: going from chicago to north africa take you all the way to china
+    // solution: debug dijkstra funciton
+
 }
