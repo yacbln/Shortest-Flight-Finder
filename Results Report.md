@@ -1,4 +1,4 @@
-                             CS225 Final Project Results 
+  #####                                                       CS225 Final Project Results 
 
 The first achievement in this project was the successful construction of a graph storing all airport objects created from the airport dataset as nodes and routes connecting them as edges. Multiple tests were run in main, and then later in tests.cpp,  to prove that our graph exactly mirrors how data is presented in the openFlights dataset. One of the tests was to display airports that have an incoming flight (route) from a certain airport (node). By comparing both routes and airport dataset, the outputs exactly match the datasets. Our graph was implemented using an adjacency list which is known to be more efficient for a BFS traversal and also Dijkstra’s algorithm which acts similar to BFS.  Next, we successfully implemented BFS traversal. BFS traverses all the airports along the routes and returns a vector of airports in the traversal order. The size of the vector obtained from BFS was 6033, which is the number of airports in our dataset.
 
