@@ -26,8 +26,7 @@ CS225 Final Project Fall 2021
 | routes_clean.csv           | Cleaned route dataset.                                        |
 | shortestPathVisualizer.h   | Header file for the shortest path visualization function.     |
 | shortestPathVisualizer.cpp | Implementation file for shortest path visualization function. |
-| tests.h                    | Tests header file.                                            |
-| tests.cpp                  | Tests implementation file.                                    |
+| test.cpp                   | Tests implementation file.                                    |
 | map.png                    | Output file of both main and tests that output a png          |
 
 
