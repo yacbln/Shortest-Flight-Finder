@@ -20,3 +20,5 @@
 * Finished Dijkstra
 * Finished Map Projection
 * Finished test suite
+* Written Results Report 
+* Recorded the presentation
