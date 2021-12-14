@@ -102,10 +102,22 @@ TEST_CASE("Dijkstra Test Path Exist", "[weight=1]") {
         cout<<airport->getAirportName() <<" --> ";
     }
     cout << "arrived";
-    
-    // Wrong result: going from chicago to north africa take you all the way to china
-    // solution: debug dijkstra funciton
+    REQUIRE(airports.front()->getAirportID() == 3830);
+    REQUIRE(airports.back()->getAirportID() == 210);
+    delete graph;
+}
 
+TEST_CASE("Airports close together") {
+    Graph* graph = new Graph( "airports_clean.csv" , "routes_clean.csv");
+    Airport* ORD = graph->getAirportWithID(3830);
+    Airport* ATL = graph->getAirportWithID(3682);
+
+    vector<Airport*> airports = graph->Dijkstra(ORD, ATL);
+    REQUIRE(airports.size() == 2);
+    REQUIRE(airports.front()->getAirportID() == 3830);
+    REQUIRE(airports.back()->getAirportID() == 3682);
+    
+    delete graph;
 }
 
 TEST_CASE("Check if greater") {
