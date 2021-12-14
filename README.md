@@ -1,6 +1,8 @@
 # vasilis2-suhaasn3-quinnd2-yacineb2
 CS225 Final Project Fall 2021
 
+**Video**: https://www.youtube.com/watch?v=wFnZOxMUrCA
+
 **Files:**
 
 | File:                      | Description:                                                  |
