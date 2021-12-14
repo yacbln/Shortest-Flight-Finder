@@ -34,7 +34,7 @@ CS225 Final Project Fall 2021
 
 1) Download the code and navigate to the appropriate directory.
 
-2) Compile the code by running the command **make clean**.
+2) Compile the code by running the command **make**.
 
 3) Run **./main \[source airport ID\] \[destination airport ID\]**
 
