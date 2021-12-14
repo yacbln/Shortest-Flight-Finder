@@ -42,7 +42,7 @@ CS225 Final Project Fall 2021
 
 1) Download the code and navigate to the appropriate directory.
 
-2) Compile the code by running the command **make clean test**.
+2) Compile the code by running the command **make test**.
 
 3) Run **./test**
 
