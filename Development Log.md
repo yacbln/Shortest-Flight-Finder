@@ -16,6 +16,7 @@
 * Started BFS Alg
 * Started Djikstra's Alg
 ## Week DEC 6 - DEC 13
-*Finished BFS
-*Finished Map Projection
-*Finished test suite
+* Finished BFS
+* Finished Dijkstra
+* Finished Map Projection
+* Finished test suite
