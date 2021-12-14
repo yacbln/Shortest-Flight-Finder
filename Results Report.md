@@ -6,7 +6,7 @@ Dijkstra’s Algorithm was a member function of the Graph class and was implemen
 
 These were our results when we ran our code from O’Hare Airport to Goroka Airport:
 
-![alt text](https://github-dev.cs.illinois.edu/cs225-fa21/vasilis2-suhaasn3-quinnd2-yacineb2/blob/main/drawUtils/map.png?raw=true)
+![alt text](https://github-dev.cs.illinois.edu/cs225-fa21/vasilis2-suhaasn3-quinnd2-yacineb2/blob/main/drawUtils/mapforreport%2Cpng.png?raw=true)
 
 The image shown above is the PNG output of our last algorithm, the world projection algorithm. The main part of  this algorithm is using a world map projection to convert the real life location of airports given their latitude and longitude into (x,y) pixel coordinates of the world map canvas image. We decided to use the Mercator projection due its simplicity but simplicity comes with a cost as the coordinates were not a 100 percent accurate in addition to uncertainties present in the original data. Despite these approximations, the pixel coordinates for airports were pretty deterministic as we can see, for instance, O’hare Airport being located near lake Michigan. After locating the airports, we drew the lines connecting them to represent the flights’ path, and that was done by modifying the original world map PNG. Next, we took advantage, rightfully, of PNG, Image, StickerSheet classes used in class specifically in mp_stickers MP. This allowed us to use all the drawing functionalities we already implemented during the semester. Specifically adding dots and city names to label the airports based on dot and letter stickers we created. 
 
