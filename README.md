@@ -26,6 +26,7 @@ CS225 Final Project Fall 2021
 | shortestPathVisualizer.cpp | Implementation file for shortest path visualization function. |
 | tests.h                    | Tests header file.                                            |
 | tests.cpp                  | Tests implementation file.                                    |
+| map.png                    | Output file of both main and tests that output a png          |
 
 
 **Execution Instructions:**
@@ -44,5 +45,4 @@ CS225 Final Project Fall 2021
 
 3) Run **./test**
 
-**Tests run in the test file:**
-
+**To run specific tests you can find all test cases in test.cpp**
